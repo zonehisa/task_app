@@ -15,7 +15,7 @@
     </div>
     <div class="group">
         【内容】<br>
-        {{ $task->body }}
+        <p>{!! nl2br(e($task->body)) !!}</p>
     </div>
 
     <div class="button-container">
@@ -24,7 +24,7 @@
         <form action="{{ route('tasks.destroy', $task) }}" method="POST">
             @csrf
             @method('DELETE')
-            <input type="submit" value="削除する" onclick="if(!confirm('ほんとにほんとに削除しちゃってもいいのかのう？')){return false};">
+            <input type="submit" value="削除する" onclick="if(!confirm('削除してもいいですか？')){return false};">
         </form>
     </div>
 </body>

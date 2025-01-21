@@ -33,7 +33,7 @@
             <input type="text" name="title" id="title" value="{{ old('title', $task->title) }}">
         </div>
         <div class="group">
-            <label for="body">内容</label>
+            <label for="body">本文</label>
             <br>
             <textarea name="body" id="body">{{ old('body', $task->body) }}</textarea>
         </div>

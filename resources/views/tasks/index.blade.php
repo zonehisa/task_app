@@ -18,7 +18,7 @@
                 <form action="{{ route('tasks.destroy', $task) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
-                    <input type="submit" value="削除する" onclick="if(!confirm('ほんとに削除してもいいのかのう？')){return false};">
+                    <input type="submit" value="削除する" onclick="if(!confirm('削除してもいいですか？')){return false};">
                 </form>
             </li>
         @endforeach
