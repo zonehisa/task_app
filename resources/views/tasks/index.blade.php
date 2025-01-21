@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,14 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <title>Document</title>
 </head>
+
 <body>
     <h1>タスク一覧</h1>
     <ul>
         @foreach ($tasks as $task)
             <li>
                 <a href="{{ route('tasks.show', $task) }}">{{ $task->title }}</a>
-                <form action="{{ route("tasks.destroy", $task) }}" method="POST" style="display:inline;">
+                <form action="{{ route('tasks.destroy', $task) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <input type="submit" value="削除する" onclick="if(!confirm('ほんとに削除してもいいのかのう？')){return false};">
@@ -23,6 +25,20 @@
     </ul>
     <hr>
     <h1>新規タスク登録</h1>
+
+    @if ($errors->any())
+        <div class="error">
+            <p>
+                <b>{{ count($errors) }}件のエラーがあります。</b>
+            </p>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action = "{{ route('tasks.store') }}" method="POST">
         @csrf
         <div class="group">
@@ -39,4 +55,5 @@
     </form>
 
 </body>
+
 </html>
