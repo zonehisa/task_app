@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>タスク編集</h1>
+    <h1>タスク詳細</h1>
     <div>【タイトル】</div>
     <div>{{ $task->title }}</div>
     <div>【内容】</div>
@@ -15,6 +15,7 @@
 
     <div class="bottun-container">
         <button onclick='location.href="{{ route("tasks.index") }}"'>一覧へ戻る</button>
+        <button onclick='location.href="{{ route("tasks.edit", $task) }}"'>編集</button>
     </div>
 </body>
 </html>

@@ -26,5 +26,17 @@ class TaskController extends Controller
         $task = Task::find($id);
         return view('tasks.show', ['task' => $task]);
     }
-
+    public function edit($id)
+    {
+        $task = Task::find($id);;
+        return view('tasks.edit', ['task' => $task]);
+    }
+    public function update(Request $request, $id)
+    {
+        $task = Task::find($id);
+        $task->title = $request->title;
+        $task->body = $request->body;
+        $task->save();
+        return redirect(route('tasks.index'));
+        }
 }
